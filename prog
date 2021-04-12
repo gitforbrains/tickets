@@ -1,0 +1,72 @@
+"""Declare three variables for holding the following: a list of films, a dict for Adult and
+Children prices and a list of concession stand items
+▪ Declare Variables for storing the number of Adults and Children
+▪ Declare a List for storing items from the concession stand
+▪ Use two functions – one for calculating tickets and one for the concession stand"""
+films = ['Action','Comedy','Horror']
+ticket_prices = {'Adult':5, 'Child':3}
+concessions = ['Drink: 3.00', 'Popcorn: 3.50', 'Other: 4.00']
+
+no_of_adults = 0
+no_of_children=0
+concessions_bought=[]
+total_cost=0
+ticket_cost=0
+
+def tickets():
+    for person, price in ticket_prices.items():
+        print(f"The price for {person} is £{price}")
+        
+# prompt the user to enter the type of film and read this data in from keyboard
+print("Welcome to the cinema, what genre would you like to see today:")
+#loop list to display available genres
+for movie in films:
+    print(movie)
+
+def tickets_buy():
+    while True:
+        movie = input("Please enter your film genre: ")
+        if movie in films:
+            tickets()
+            adult_tickets = int(input("How many adult tickets would you like"))
+            child_tickets = int(input("How many children's tickets would you like"))
+            ticket_cost = (adult_tickets * 5) + (child_tickets * 3)
+            print(f"the ticket cost is £{ticket_cost}")
+            return ticket_cost
+"""When the user presses Y or y, the items should be displayed in a list with prices:
+▪ Drink: 3.00 / Popcorn 3.50 / Other 4.00
+After the user selects an item, a loop and if else statement should be used to ask if they want
+to add another item, there should be a total and a list to store this information"""        
+def concessions_prog():
+            total_cost=0
+            concession_choice = input("Would like something from the concessions stand?")
+            while concession_choice == 'Y' or concession_choice == 'y':
+                for item in concessions:
+                    print(item)
+                newItem = input("What would you like?")
+                if newItem == 'Drink':
+                    total_cost +=3
+                    concessions_bought.append('Drink')
+                    print(total_cost)
+                elif newItem == 'Popcorn':
+                    total_cost +=3.50
+                    concessions_bought.append('Popcorn')
+                    print(total_cost)
+                elif newItem == 'Other':
+                    total_cost +=4
+                    concessions_bought.append('Other')
+                    print(total_cost)
+                else:
+                    break
+            return concessions_bought 
+
+tickets_buy()
+concessions_prog()
+#print(concessions_bought, total_cost)
+def output (movie, adult_tickets, child_tickets, ticket_cost, concessions_bought, total_cost):
+    print(f"Your film: {movie}")
+    print(f"Adults: {adult_tickets} Children: {child_tickets} Ticket Cost: £{ticket_cost}")
+    print(f"Concessions: {concessions_bought}")
+    total = ticket_cost + total_cost
+    print(f"Total: £{total}")
+output(movie, adult_tickets, child_tickets, ticket_cost, concessions_bought, total_cost)
