@@ -22,10 +22,9 @@ print("Welcome to the cinema, what genre would you like to see today:")
 #loop list to display available genres
 for movie in films:
     print(movie)
-
+movie = input("Please enter your film genre: ")
 def tickets_buy():
     while True:
-        movie = input("Please enter your film genre: ")
         if movie in films:
             tickets()
             adult_tickets = int(input("How many adult tickets would you like"))
@@ -39,11 +38,11 @@ After the user selects an item, a loop and if else statement should be used to a
 to add another item, there should be a total and a list to store this information"""        
 def concessions_prog():
             total_cost=0
-            concession_choice = input("Would like something from the concessions stand?")
+            concession_choice = input("Would like something from the concessions stand? y/n")
             while concession_choice == 'Y' or concession_choice == 'y':
                 for item in concessions:
                     print(item)
-                newItem = input("What would you like?")
+                newItem = input("What would you like? Or N to exit")
                 if newItem == 'Drink':
                     total_cost +=3
                     concessions_bought.append('Drink')
@@ -62,6 +61,7 @@ def concessions_prog():
 
 tickets_buy()
 concessions_prog()
+#ticket_cost
 #print(concessions_bought, total_cost)
 def output (movie, adult_tickets, child_tickets, ticket_cost, concessions_bought, total_cost):
     print(f"Your film: {movie}")
